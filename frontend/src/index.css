@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Outfit', 'Inter', 'system-ui', 'sans-serif';
+  
+  --color-dark-50: #f6f6f7;
+  --color-dark-100: #ebeeef;
+  --color-dark-200: #d3d9df;
+  --color-dark-300: #adb8c3;
+  --color-dark-400: #8192a3;
+  --color-dark-500: #617488;
+  --color-dark-600: #4e5e6f;
+  --color-dark-700: #414e5d;
+  --color-dark-800: #39424e;
+  --color-dark-900: #323942;
+  --color-dark-950: #1b1e22;
+
+  --color-accent-50: #faf5ff;
+  --color-accent-100: #f3e8ff;
+  --color-accent-200: #e9d5ff;
+  --color-accent-300: #d8b4fe;
+  --color-accent-400: #c084fc;
+  --color-accent-500: #a855f7;
+  --color-accent-600: #9333ea;
+  --color-accent-700: #7e22ce;
+  --color-accent-800: #6b21a8;
+  --color-accent-900: #581c87;
+  
+  --animate-bounce-slow: bounce 2s infinite;
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@layer base {
+  body {
+    @apply bg-[#0b0f17] text-slate-100 font-sans antialiased overflow-x-hidden;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(147, 51, 234, 0.08) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(14, 141, 233, 0.08) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(20, 30, 48, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel-hover:hover {
+  background: rgba(20, 30, 48, 0.6);
+  border-color: rgba(168, 85, 247, 0.25);
+  box-shadow: 0 10px 30px -10px rgba(168, 85, 247, 0.15);
+  transform: translateY(-2px);
+}
+
+.glass-card-purple {
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.1) 0%, rgba(20, 30, 48, 0.4) 100%);
+  border: 1px solid rgba(147, 51, 234, 0.15);
+}
+
+.glass-card-blue {
+  background: linear-gradient(135deg, rgba(14, 141, 233, 0.1) 0%, rgba(20, 30, 48, 0.4) 100%);
+  border: 1px solid rgba(14, 141, 233, 0.15);
+}
+
+.glass-card-green {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(20, 30, 48, 0.4) 100%);
+  border: 1px solid rgba(34, 197, 94, 0.15);
+}
+
+.glass-card-red {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(20, 30, 48, 0.4) 100%);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+}
+
+.glass-card-yellow {
+  background: linear-gradient(135deg, rgba(234, 179, 8, 0.1) 0%, rgba(20, 30, 48, 0.4) 100%);
+  border: 1px solid rgba(234, 179, 8, 0.15);
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
