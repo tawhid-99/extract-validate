@@ -33,10 +33,16 @@ OLLAMA_BASE_URL = "http://localhost:11434"
 OLLAMA_MODEL = "llama3.2"
 OLLAMA_EMBED_MODEL = "bge-m3"
 
+
+def get_configured_model(default_model: str = OLLAMA_MODEL) -> str:
+    """Return the configured LLM model from the environment."""
+    return os.environ.get("LLM_Model") or os.environ.get("GROQ_MODEL") or default_model
+
+
 class OllamaClient:
-    def __init__(self, base_url: str = OLLAMA_BASE_URL, model: str = OLLAMA_MODEL, embed_model: str = OLLAMA_EMBED_MODEL):
+    def __init__(self, base_url: str = OLLAMA_BASE_URL, model: str = None, embed_model: str = OLLAMA_EMBED_MODEL):
         self.base_url = base_url
-        self.model = model
+        self.model = model or get_configured_model(OLLAMA_MODEL)
         self.embed_model = embed_model
         self.generate_url = f"{base_url}/api/generate"
 
@@ -144,7 +150,7 @@ class OllamaClient:
         """
         groq_key = os.environ.get("GROQ_API_KEY")
         if groq_key:
-            model = os.environ.get("GROQ_MODEL", "llama-3.3-70b-versatile")
+            model = get_configured_model("llama-3.3-70b-versatile")
             headers = {
                 "Authorization": f"Bearer {groq_key}",
                 "Content-Type": "application/json"
@@ -217,27 +223,31 @@ class OllamaClient:
     async def get_embedding(self, prompt: str) -> list:
         """
         Get vector embedding for a text from Ollama.
-        Tries with 30s timeout first, then retries with 180s.
+        Falls back to an empty embedding list when the local embedding model is unavailable,
+        so deduplication can continue using fuzzy matching.
         """
         payload = {
             "model": self.embed_model,
             "prompt": prompt
         }
-        
-        timeouts = [60.0, 180.0]
-        for attempt, timeout_val in enumerate(timeouts, 1):
+
+        for attempt, timeout_val in enumerate([60.0, 180.0], 1):
             try:
                 async with httpx.AsyncClient(timeout=timeout_val) as client:
                     response = await client.post(f"{self.base_url}/api/embeddings", json=payload)
                     if response.status_code == 200:
                         return response.json().get("embedding", [])
-                    else:
-                        logger.error(f"Ollama embeddings endpoint returned status {response.status_code}: {response.text}")
+                    if response.status_code in (404, 400):
+                        return []
+                    logger.warning(
+                        "Ollama embeddings endpoint returned status %s; using fuzzy deduplication fallback.",
+                        response.status_code,
+                    )
             except httpx.TimeoutException:
-                if attempt < len(timeouts):
-                    logger.warning(f"Ollama embeddings request timed out after {timeout_val}s. Retrying with a {timeouts[attempt]}s limit...")
+                if attempt < 2:
                     continue
-                logger.error(f"Ollama embeddings timed out after {timeout_val}s limit.")
-            except Exception as e:
-                logger.error(f"Error calling Ollama embeddings: {e}")
+                logger.warning("Ollama embeddings timed out after %ss; using fuzzy deduplication fallback.", timeout_val)
+                return []
+            except Exception:
+                return []
         return []

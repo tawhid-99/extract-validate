@@ -1,0 +1,44 @@
+# JOINT OPERATING AND COMMERCIAL SUPPLY AGREEMENT
+Document Code: JOS-AGR-2026-06
+Last Updated: June 3, 2026
+
+This Joint Operating and Supply Agreement (the "Agreement") is entered into to establish the general terms, conditions, and trade compliance requirements governing transactions between the Supplier and the Buyer.
+
+---
+
+### ARTICLE 1: CREDIT, VALUATION, AND FINANCIAL PARAMETERS
+1.1 Transactions executed under this Agreement are subject to mandatory value checks. Any single purchase order or shipment exceeding a total transaction value of $50,000 USD must be secured using an irrevocable Letter of Credit (L/C). This letter must be issued or confirmed by a first-class international financial institution.
+1.2 Standard payment terms are net 60 days, calculated from the date of final customs clearance at the designated port of entry.
+1.3 All outstanding accounts, credits, and receivables must be settled in USD currency. Transactions originating from regional partners must maintain a minimum value of $10,000 USD per transaction.
+
+---
+
+### ARTICLE 2: REGULATORY LICENSES AND COMPLIANCE STANDARDS
+2.1 Prior to shipping cargo containing industrial equipment or components classified under Harmonized System (HS) Codes in Chapter 84 or 85, the importer is required to obtain a valid Import License from the national Ministry of Commerce.
+2.2 The Supplier must maintain active ISO 9001 and ISO 9050 Quality Management System certifications. Verification certificates must be provided annually to the Buyer's compliance auditor.
+
+---
+
+### ARTICLE 3: DELIVERY PROCEDURES AND TIMELINES
+3.1 Goods shall be delivered Free on Board (FOB) Rotterdam in accordance with Incoterms 2020 rules.
+3.2 The standard lead time for the manufacture and shipping of custom components is 45 calendar days, beginning from the day order confirmations are issued.
+3.3 The freight forwarder must dispatch ship notification details, cargo manifests, and Bill of Lading copies to the receiving party at least 72 hours prior to the vessel departing the loading port.
+
+---
+
+### ARTICLE 4: SANCTIONS AND JURISDICTION
+4.1 No commodities, raw materials, or technical blueprints provided under this Agreement may be sourced from, or transit through, countries subject to active trade embargoes or sanctions lists managed by the United Nations, the European Union, or the US Office of Foreign Assets Control (OFAC).
+4.2 Legal disputes arising under this agreement will be governed exclusively by the laws of the Netherlands and settled through arbitration in Rotterdam.
+
+---
+
+### ARTICLE 5: CUSTOMS DOCUMENTATION
+5.1 Every shipment must contain a valid Certificate of Origin validated by the local Chamber of Commerce at the port of export. Custom entries must include a packing list with net weights and three original copies of the commercial invoice.
+5.2 Discrepancies between custom entry declarations and commercial invoices exceeding 2% in total weight or quantity will cause the immediate rejection of the entire shipment.
+
+---
+
+### ARTICLE 6: TECHNICAL AND TESTING GUIDELINES
+6.1 All electronic components and consumer appliances must comp
+ly with Conformite Europeenne (CE) directives and bear the official CE mark on their primary chassis labels.
+6.2 Products categorised as medical devices must submit safety testing certificates issued by an accredited laboratory like TÜV or SGS before customs clearance approval.
